@@ -1,2 +1,10 @@
-# practica-2-LEGH
-Practica 2 de Sistemas Distribuidos en Internet. Creando un API REST con Node.js, Express y Mongodb.
+# Práctica 2: Introducción Rest API con NodeJS, ExpressJS, y MongoDB
+
+Luis Enrique Garcia Hernandez
+
+Implementando un **Rest-API** utilizando NodeJS, ExpressJS y MongoDB.
+
+Comandos:
+git clone
+npm install
+npm start
