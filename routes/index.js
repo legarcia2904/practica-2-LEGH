@@ -30,6 +30,9 @@ router.route('/autores/:id')
     .put(upload.array(),LibrosCtrl.updateAutores)//actualizar nombre de autor en los libros
     .delete(LibrosCtrl.deleteAutor);//eliminar libros del autor
 
+router.route('/autores/:id/libros')
+    .get(LibrosCtrl.getLibrosDadoAutor); //Devuelve los libros escritos por el autor identificado con id
+
 module.exports = router;
 
 
