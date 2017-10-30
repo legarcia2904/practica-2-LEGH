@@ -1,43 +1,35 @@
 var express = require('express');
 var router = express.Router();
 
-var multer = require('multer'); // v1.0.5
-var upload = multer(); // for parsing multipart/form-data
+var multer = require('multer');//v1.0.5
+var upload = multer();//parsing multipart/form-data
 
 var modelos = require('../models/Libro');
+var modelosAutor = require('../models/Autor');
 var LibrosCtrl = require('../controllers/LibrosCtrl');
 
-
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express', saludo:'gen 2017'});
+    res.render('index', { title: 'Express', saludo: 'Gen 2017' });
 });
-
-/*router.get('/libros', function(req,res, next){
-  res.render('index', { title: 'Libros', saludo:'gen 2017'});	
-});
-
-router.post('/libros', function(req,res,next){
-	res.status(200).jsonp({nombre:'código Da Vinci', autor:'Dan Brown'});
-});*/
 
 router.route('/libros')
-	.get(LibrosCtrl.getLibros)
-	.post(upload.array(),LibrosCtrl.addLibro);
+    .get(LibrosCtrl.getLibros)
+    .post(upload.array(),LibrosCtrl.addLibro);
 
 router.route('/libros/:id')
-	.get(LibrosCtrl.getById)
-	.put(upload.array(), LibrosCtrl.updateLibro)
-	.delete(LibrosCtrl.deleteLibro);
-/*
-router.route('/autores')
-	.get(); //Devolver todos los autores
+    .get(LibrosCtrl.getById)
+    .put(upload.array(),LibrosCtrl.updateLibro)
+    .delete(LibrosCtrl.deleteLibro);
 
-router.route('/autores/:nombre')
-	.get() //Devolver todos los libros del autor
-	.put() //Actualizar nombre de autor en los libros
-	.delete(); //Eliminar libros del autor
-*/
-	//Utilizar git, crear una cuenta en github y subir tarea1; no subir los node_modules; hacer README.md
+router.route('/autores')
+    .get(LibrosCtrl.getAutores) //devolver todos los autores
+    .post(upload.array(),LibrosCtrl.addAutor);
+
+router.route('/autores/:id')
+    .get(LibrosCtrl.getByAutor)//devolver todos los libros del autor
+    .put(upload.array(),LibrosCtrl.updateAutores)//actualizar nombre de autor en los libros
+    .delete(LibrosCtrl.deleteAutor);//eliminar libros del autor
 
 module.exports = router;
+
+
